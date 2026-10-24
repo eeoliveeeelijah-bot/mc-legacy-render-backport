@@ -1,0 +1,20 @@
+# Build output
+build/
+build-*/
+cmake-build-*/
+out/
+*.class
+*.jar
+*.so
+*.dylib
+*.dll
+*.o
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
