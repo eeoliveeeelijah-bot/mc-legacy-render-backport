@@ -4,5 +4,5 @@ This repository contains the core JNI boundary and memory management implementat
 
 ## Architecture Highlights
 * **Zero-Copy JNI:** Passes mapped GPU memory pointers directly to the native layer.
-* **Off-Heap Memory Pinning:** Utilizes `sun.misc.Unsafe` to pin memory regions, preventing ZGC/G1GC from compacting or sweeping buffers during active C2 JIT execution and on-stack replacement (OSR).
+* **Off-Heap Lifetime & Memory Ordering:** Combines `sun.misc.Unsafe` store fences with `Reference.reachabilityFence` so C2 scalar replacement and OSR deoptimizations cannot prematurely trigger `Cleaner` deallocation on off-heap buffers during native staging.
 * **Vulkan Synchronization:** Handles cross-boundary memory barriers prior to command buffer submission.
